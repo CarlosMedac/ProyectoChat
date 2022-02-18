@@ -3,15 +3,9 @@ import React from 'react';
 class FilaDeTabla extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            user:{
-                "nombre":props.usuario,
-            }
-        }
     }
-    render() {
-        var user=this.props.usuario;
-        if(this.props.chat.user==user){
+    render(){
+        if(this.props.chat.user==this.props.usuario){//Comprueba cual es el usuario registrado para que su mensaje este a la derecha
             return (
                 <div className='MensajeDerecha'>
                     <div className='MensajeUserDer'>{this.props.chat.user}</div>
@@ -27,8 +21,7 @@ class FilaDeTabla extends React.Component {
                     <div className='MensajeFecha'>{this.props.chat.fecha}</div>
                 </div>
             );
-        }
-        
+        } 
     }
 }
 

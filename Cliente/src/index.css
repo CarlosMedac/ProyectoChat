@@ -11,41 +11,85 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/*Login*/
+.Login{
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 0%, rgba(253,64,38,1) 55%, rgba(252,176,69,1) 98%);
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.BloqueLogin{
+  background-color: white;
+  width: 45vh;
+  height: 45vh;
+  border-radius: 20px;
+  text-align: center;
+}
+.BotonLogin{
+  width: 25vh;
+  border-radius: 20px;
+  border: none;
+  height: 3vh;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+}
+.RegistroLogin{
+  display: inline;
+}
+.Login h2{
+  color: black;
+  text-align: center;
+  font-size: 5vh;
+}
+.Login input{
+  text-align: center;
+  width: 25vh;
+  height: 3vh;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+/*Chat principal*/
 .home{
   background-color: #ffffff;
   height: 100%;
-  min-height: 100vh; 
-  width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
   align-items: center;
 }
-/* .EnviarMensaje{
-  margin-top: 1vh;
-} */
+.ChatPrincipal{
+  background: rgb(63,94,251);
+  background: linear-gradient(184deg, rgba(63,94,251,1) 0%, rgba(88,91,232,1) 41%, rgba(189,78,155,1) 71%, rgba(224,68,205,1) 100%);
+}
 .botonEnviar{
   background-color:rgb(111, 111, 185) ;
   border: none;
   border-radius: 50%;
   font-size: 2vh;
   padding: 1vh 1.2vh;
+  margin-bottom: 1vh;
+  cursor: pointer;
 }
 .textEnviar{
   width: 50vh;
   height: 3.5vh;
   border-radius: 20px;
   border-bottom-right-radius: -30%;
-  margin-right: 2vh;
+  margin-right: 1vh;
   padding-left: 2vh;
+  margin-left: 1vh;
 }
 .cabecera{
   display: flex;
   width: 59.8vh;
   background-color: white;
-  border-left:solid 1px black ;
-  border-right:solid 1px black ;
+  border-left:solid 1px rgb(189, 189, 189) ;
+  border-right:solid 1px rgb(201, 201, 201) ;
 }
 .nombrePerfil{
   margin-left: 20px;
@@ -68,27 +112,49 @@ code {
 }
 .logout{
   margin-top: 5px;
-  margin-left: 65%;
+  border-radius: 50%; 
+  height: 50px; 
+  width: 50px;
+  font-size: 20px;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+.eliminarchat{
+  margin-left: 55%;
+  margin-top: 5px;
   border-radius: 50%; 
   height: 50px; 
   width: 50px;
   font-size: 20px;
   border: none;
+  cursor: pointer;
 }
+.TodosMensajes{
+  width: 60vh;
+  height: 87vh;
+  overflow-y: scroll;
+  background-attachment: fixed;
+}
+.EnviarMensaje{
+  margin-top: 0.5vh;
+}
+/*Mensajes*/
 .Mensaje{
   border: solid 1px rgb(201, 201, 201);
   margin: 2vh;
-  width: 150px;
+  width: 25%;
   padding-left: 1vh;
   padding-right: 2vh;
   padding-bottom: 1vh;
   border-radius: 20px;
+  margin-left: 3vh;
   background-color: #ffffff;
 }
 .MensajeDerecha{
   position: relative;
   right: -60%;
-  width: 150px;
+  width: 25%;
   border: solid 1px rgb(201, 201, 201);
   margin: 2vh;
   padding-left: 1vh;
@@ -96,16 +162,6 @@ code {
   padding-bottom: 1vh;
   border-radius: 20px;
   background-color: #ffffff;
-}
-
-.TodosMensajes{
-  background: rgb(63,94,251);
-  background: linear-gradient(184deg, rgba(63,94,251,1) 0%, rgba(88,91,232,1) 41%, rgba(189,78,155,1) 71%, rgba(224,68,205,1) 100%);
-  width: 60vh;
-  height: 85vh;
-  overflow-y: scroll;
-  background-attachment: fixed;
-
 }
 .MensajeUserDer{
   color:#ef4774;
@@ -127,4 +183,63 @@ code {
   font-size: 12px;
   font-weight: 300;
   margin-left: 80%;
+}
+@media screen and (max-width: 600px) {
+  .home{
+    display: block;
+    width: 100%;
+    overflow-y:hidden;
+  }
+  .cabecera{
+    display: flex;
+    width: 100%;
+  }
+  .textEnviar{
+    width: 70%;
+  }
+  .MensajeDerecha{
+    right: -60%;
+  }
+  .ChatPrincipal{
+    width: 100%;
+    height: 100%;
+  }
+  .eliminarchat{
+    margin-left: 40%;
+  }
+  .TodosMensajes{
+    width: 100%;
+    height: 86.7vh;
+  }
+}
+@media screen and (max-width: 400px) {
+  .eliminarchat{
+    margin-left: 30%;
+  }
+}
+@media screen and (max-width: 300px) {
+  .eliminarchat{
+    margin-left: 10%;
+  }
+}
+/*Scrollbar*/
+.TodosMensajes::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.TodosMensajes::-webkit-scrollbar:vertical {
+  width:5px;
+}
+.TodosMensajes::-webkit-scrollbar-button:increment,.TodosMensajes::-webkit-scrollbar-button {
+  display: none;
+} 
+.TodosMensajes::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+.TodosMensajes::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb;
+  border-radius: 20px;
+}
+.TodosMensajes::-webkit-scrollbar-track {
+  border-radius: 10px; 
+  height: 1vh; 
 }

@@ -4,10 +4,8 @@ import Login from "./Login";
 import Registro from "./Registro";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-function App() {
+function App() {/*Funcion para enrutar los componentes*/
   return (
-    <div>
-
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login/>}/>
@@ -15,7 +13,6 @@ function App() {
         <Route path="/Registro" element={<Registro/>}/>     
       </Routes>
       </BrowserRouter>
-    </div>
   );
 }
 

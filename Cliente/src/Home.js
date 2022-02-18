@@ -5,7 +5,7 @@ import EnviarMensaje from "./EnviarMensaje";
 class Home extends React.Component{
     
     constructor(props){
-        var usuario=localStorage.getItem("Nombre");
+        var usuario=localStorage.getItem("Nombre");//Cojo la variable que he guardado en el localstorage y la guardo en el estado
         super(props);
         this.state = {
             chat:{
@@ -25,17 +25,21 @@ class Home extends React.Component{
                 <div className='cabecera'>
                     <div className='perfil'>{primerCaracter}</div>
                     <h3 className='nombrePerfil'>{user}</h3>
+                    <button className='eliminarchat' onClick={this.Eliminar}><i className="fas fa-trash"></i></button>
                     <button className='logout' onClick={this.Redireccionar}><i className="fas fa-arrow-left"></i></button>
                 </div>                
                 <EnviarMensaje usuario={user}></EnviarMensaje>       
             </div>
-           
         ) 
         }
     }
-    Redireccionar(){
+    Redireccionar(){//Si vuelves se elimina la variable de usuario
         localStorage.setItem("Nombre","");
         window.location.href = "http://localhost:3000/";
+    }
+    Eliminar(){//Para eliminar todo el contenido del chat
+    fetch("http://localhost/proyectochat/eliminarMensajes.php");
+    window.location.href = window.location.href;  
     }
 }
 

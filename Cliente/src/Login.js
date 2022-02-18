@@ -1,12 +1,8 @@
 import React from "react";
-import { Navigate } from 'react-router';
 import { Link } from "react-router-dom";
-import Registro from "./Registro";
+import $ from "jquery";
 
 
-const setCookieFunction = (value) => {
-    localStorage.setItem('user', value)
-}
 class Login extends React.Component{
     constructor(props){
         super(props);
@@ -20,27 +16,25 @@ class Login extends React.Component{
         this.manejarEnvioFormulario = this.manejarEnvioFormulario.bind(this);
     }
     render(){
-        return(
-            <div>
-                <h2>Inicio de sesion</h2>
-                <form onSubmit={this.manejarEnvioFormulario}>
-                    <label htmlFor="user" >Usuario</label>
-                    <input autoFocus required id="nombre" type="text" onChange={this.manejarCambio} value={this.state.login.nombre}></input>
-                    <label htmlFor="pass" >Contraseña</label>
-                    <input required id="pass" type="password" onChange={this.manejarCambio} value={this.state.login.pass}></input>
-                    <input type="submit" id="button"></input>
-                </form>
-                <div>No estas registrado <Link to="/Registro">Registrate ya</Link></div>
+        return(  
+            <div className="Login">
+                <div className="BloqueLogin">
+                    <h2>Inicio de sesion</h2>
+                        <form onSubmit={this.manejarEnvioFormulario}>
+                            <input className="LoginUser" autoFocus required placeholder="Nombre" id="nombre" type="text" onChange={this.manejarCambio} value={this.state.login.nombre}></input><br></br>
+                            <input className="LoginPass" placeholder="Contraseña" required id="pass" type="password" onChange={this.manejarCambio} value={this.state.login.pass}></input><br></br>
+                            <input className="BotonLogin" type="submit" id="button" value="Siguiente"></input>
+                        </form>
+                    <div className="RegistroLogin">No estas registrado <Link to="/Registro">Registrate ya</Link></div>
+                </div>
             </div>
         );
     }
-    
     async manejarEnvioFormulario(evento) {
         evento.preventDefault();
-        
+        try{
         const cargaUtil = JSON.stringify(this.state.login);
-        var user=(this.state.login.nombre);
-        localStorage.setItem("Nombre",user);
+        localStorage.setItem("Nombre",this.state.login.nombre);
         const respuesta = await fetch("http://localhost/proyectochat/sesion.php", {
             method: "POST",
             body: cargaUtil,
@@ -54,12 +48,14 @@ class Login extends React.Component{
                 }
             });
             window.location.href=("http://localhost:3000/Chat");
-        } else {
-            console.log("Envio mal");
         }
+        }catch(e){
+            $(".LoginPass").css("border","solid 2px red");
+            $(".LoginUser").css("border","solid 2px red");
+        }  
     }
     manejarCambio(evento){
-        
+        $(".LoginPass").css("border","solid black 2px");
         const clave = evento.currentTarget.id;
         let valor = evento.target.value;
         this.setState(state =>{

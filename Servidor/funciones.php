@@ -13,7 +13,11 @@ function obtenerChat()
     $sentencia = $bd->query("SELECT id, fecha, mensaje, user FROM chat order by id asc");
     return $sentencia->fetchAll();
 }
-
+function eliminarChat(){
+    $bd = obtenerConexion();
+    $sentencia=$bd->query("TRUNCATE TABLE chat");
+    return $sentencia;
+}
 function obtenerUsuario()
 {
     $bd = obtenerConexion();
