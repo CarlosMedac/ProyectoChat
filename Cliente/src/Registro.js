@@ -45,14 +45,15 @@ class Registro extends React.Component{
                         pass: "",
                     }
                 });
-                window.location.href=("http://localhost:3000/");
+                localStorage.setItem("Nombre",this.state.login.nombre);
+                window.location.href=("http://localhost:3000/Chat");
             }
         }catch(e){
-            $(".LoginUsuario").css("border","solid 2px red");
+            $(".LoginUsuario").css("border-bottom","solid 2px red");
         }
     }
     manejarCambio(evento){
-        $(".LoginUsuario").css("border","solid black 2px");
+        $(".LoginUsuario").css("border-bottom","solid black 2px");
         const clave = evento.currentTarget.id;
         let valor = evento.target.value;
         this.setState(state =>{

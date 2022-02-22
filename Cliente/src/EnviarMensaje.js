@@ -34,7 +34,7 @@ class EnviarMensaje extends React.Component{
                     })}
                 </div>
             <div className="EnviarMensaje">
-                <form onSubmit={this.manejarEnvioFormulario} autocomplete="off">
+                <form onSubmit={this.manejarEnvioFormulario} autoComplete="off">
                         <input required placeholder="Mensaje" className="textEnviar" type="text" id="mensaje" onChange={this.manejarCambio} value={this.state.chat.mensaje} />
                         <button autoFocus className="botonEnviar" type="submit"><i className="fas fa-arrow-right"></i></button>
                 </form>
@@ -60,7 +60,7 @@ class EnviarMensaje extends React.Component{
             });
             this.componentDidMount();//LLamo a la funcion componentDidMount para que muestre los mensajes introducidos
             var obj = document.getElementById('MensajesScroll');
-            $('.TodosMensajes').animate({scrollTop: obj.scrollHeight},"smooth");//Al insertar un mensaje se bajara el scroll
+            $('.TodosMensajes').animate({scrollTop: obj.scrollHeight},"fast");//Al insertar un mensaje se bajara el scroll
         }
     }
     manejarCambio(evento){//Actualiza el estado de la variable chat

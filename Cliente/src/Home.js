@@ -28,7 +28,7 @@ class Home extends React.Component{
                     <button className='eliminarchat' onClick={this.Eliminar}><i className="fas fa-trash"></i></button>
                     <button className='logout' onClick={this.Redireccionar}><i className="fas fa-arrow-left"></i></button>
                 </div>                
-                <EnviarMensaje usuario={user}></EnviarMensaje>       
+                <EnviarMensaje usuario={user}></EnviarMensaje>  
             </div>
         ) 
         }

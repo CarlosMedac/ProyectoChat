@@ -1,4 +1,15 @@
 <?php
+// CREATE TABLE IF NOT EXISTS usuarios(
+//     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//     user VARCHAR(255) NOT NULL,
+//     pass VARCHAR(255) NOT NULL
+// );
+// CREATE TABLE IF NOT EXISTS chat(
+//     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//     fecha DATE NOT NULL,
+//     mensaje VARCHAR(255) NOT NULL,
+//     user VARCHAR(255) NOT NULL,
+// );
 function enviarMensaje($mensaje)
 {
     $hoy = date("H:i"); 
@@ -6,7 +17,6 @@ function enviarMensaje($mensaje)
     $sentencia = $bd->prepare("INSERT INTO chat(fecha, mensaje, user) VALUES (?, ?, ?)");
     return $sentencia->execute([$hoy, $mensaje->mensaje, $mensaje->nombre]);
 }
-
 function obtenerChat()
 {
     $bd = obtenerConexion();

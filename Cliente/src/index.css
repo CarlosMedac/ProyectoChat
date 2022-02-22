@@ -36,6 +36,7 @@ code {
   height: 3vh;
   margin-top: 2vh;
   margin-bottom: 3vh;
+  cursor: pointer;
 }
 .RegistroLogin{
   display: inline;
@@ -46,11 +47,12 @@ code {
   font-size: 5vh;
 }
 .Login input{
-  text-align: center;
+  border: none;
   width: 25vh;
   height: 3vh;
-  border-radius: 10px;
   margin-bottom: 30px;
+  border-bottom: solid 2px black;
+  outline:none;
 }
 /*Chat principal*/
 .home{
@@ -74,6 +76,7 @@ code {
   padding: 1vh 1.2vh;
   margin-bottom: 1vh;
   cursor: pointer;
+  outline:none;
 }
 .textEnviar{
   width: 50vh;

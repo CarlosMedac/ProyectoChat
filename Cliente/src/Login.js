@@ -35,7 +35,7 @@ class Login extends React.Component{
         try{
         const cargaUtil = JSON.stringify(this.state.login);
         localStorage.setItem("Nombre",this.state.login.nombre);
-        const respuesta = await fetch("http://localhost/proyectochat/sesion.php", {
+        const respuesta = await fetch("http://localhost/proyectochat/sesion.php", {//Le paso las variables user y pass para almacenarlas en la base de datos
             method: "POST",
             body: cargaUtil,
         });
@@ -50,12 +50,13 @@ class Login extends React.Component{
             window.location.href=("http://localhost:3000/Chat");
         }
         }catch(e){
-            $(".LoginPass").css("border","solid 2px red");
-            $(".LoginUser").css("border","solid 2px red");
+            $(".LoginPass").css("border-bottom","solid 2px red");//En caso de que el usuario este mal o la contraseña se pondra en rojo el borde
+            $(".LoginUser").css("border-bottom","solid 2px red");
         }  
     }
     manejarCambio(evento){
-        $(".LoginPass").css("border","solid black 2px");
+        $(".LoginPass").css("border-bottom","solid black 2px");//Si cambia algo se pondra en negro
+        $(".LoginUser").css("border-bottom","solid 2px black");
         const clave = evento.currentTarget.id;
         let valor = evento.target.value;
         this.setState(state =>{
